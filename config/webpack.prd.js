@@ -1,17 +1,5 @@
 module.exports = {
-    devServer: {
-        host: '127.0.0.1',
-        port: '1234',
-        hot: true,
-        overlay: {
-            errors: true
-        },
-        historyApiFallback: true,
-        // publicPath: '/',
-        clientLogLevel: 'none',
-        compress: true
-        // quiet: true
-    },
+    mode: 'production',
     module: {
         rules: [
             {

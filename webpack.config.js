@@ -1,38 +1,13 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-// const webpack = require('webpack');
+const common = require('./config/webpack.common.js');
+const dev = require('./config/webpack.dev');
+const prd = require('./config/webpack.prd');
 
-module.exports = {
-    entry: path.resolve(__dirname, './src/main.js'),
-    output: {
-        filename: 'index.js',
-        path: path.resolve(__dirname, 'dist')
-        // publicPath: './'
-    },
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
-            },
-            {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
-            }
-        ]
-    },
-    plugins: [
-        new CleanWebpackPlugin(['dist']),
-        new HtmlWebpackPlugin({
-            title: 'Output Management',
-            filename: 'index.html',
-            template: 'index.html'
-        })
-    ]
+const merge = require('webpack-merge');
+
+module.exports = env => {
+    if (env.NODE_ENV === 'prd') {
+        return merge(prd, common);
+    } else {
+        return merge(dev, common);
+    }
 };
