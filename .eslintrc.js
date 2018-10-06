@@ -21,6 +21,7 @@ module.exports = {
         "extends": "eslint:recommended",    // 启用推荐规则
         "indent": [2, 4],//缩进风格
         "semi": [0],
+        "no-new": "off"
     },
     // "globals": { "var1": true,"var2": false }    // 配置全局变量
 };
