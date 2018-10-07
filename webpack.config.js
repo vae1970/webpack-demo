@@ -1,6 +1,7 @@
-const base = require('./config/webpack.base.js');
-const dev = require('./config/webpack.dev');
-const prd = require('./config/webpack.prd');
+'use strict'
+const base = require('./build/webpack.base.js');
+const dev = require('./build/webpack.dev');
+const prd = require('./build/webpack.prd');
 
 const merge = require('webpack-merge');
 

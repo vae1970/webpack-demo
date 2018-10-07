@@ -1,7 +1,14 @@
+'use strict'
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 module.exports = {
     mode: 'production',
     module: {
         rules: [
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
             {
                 test: /\.(css|less)$/,
                 use: [
@@ -13,9 +20,7 @@ module.exports = {
             }
         ]
     },
-    resolve: {
-        alias: {
-            // vue: 'vue/dist/vue.js'
-        }
-    }
+    plugins: [
+        new VueLoaderPlugin()
+    ]
 };
