@@ -12,6 +12,9 @@ module.exports = {
     },
     extends: [                  // 指定eslint规范
         'standard',
+        // "plugin:vue/recommended",
+        // "plugin:vue/base",
+        // 'plugin:vue/essential'
     ],
 
     // "off" 或 0 - 关闭规则
