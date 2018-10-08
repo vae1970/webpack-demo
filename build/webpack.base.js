@@ -2,7 +2,7 @@
 const path = require('path');
 
 // 拼接路径
-function resolve(track) {
+function resolve (track) {
     return path.join(__dirname, '..', track);
 }
 
@@ -19,16 +19,6 @@ module.exports = {
                 exclude: /node_modules/,
                 include: resolve('src')
             },
-            // {
-            //     test: /\.js$/,
-            //     exclude: /(node_modules|bower_components)/,
-            //     use: {
-            //         loader: 'babel-loader',
-            //         options: {
-            //             presets: ['@babel/preset-env']
-            //         }
-            //     }
-            // },
             {
                 test: /\.vue$/,
                 use: 'vue-loader'

@@ -1,7 +1,9 @@
 'use strict'
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const base = require('./webpack.base.js');
+const merge = require('webpack-merge');
 
-module.exports = {
+module.exports = merge(base, {
     mode: 'production',
     module: {
         rules: [
@@ -23,4 +25,4 @@ module.exports = {
     plugins: [
         new VueLoaderPlugin()
     ]
-};
+});
