@@ -5,6 +5,15 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const base = require('./webpack.base.js');
 const merge = require('webpack-merge');
 const path = require('path');
+// rm-rf for node
+const rm = require('rimraf');
+// 指定删除的目录
+const rmDir = path.resolve(__dirname, '/dev/shm/*');
+
+// 构建前清空build目录
+rm(rmDir, function (err) {
+    if (err) throw err;
+});
 
 module.exports = merge(base, {
     mode: 'production',
