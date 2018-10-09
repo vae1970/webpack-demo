@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const path = require('path');
 
 // 拼接路径
@@ -8,9 +8,6 @@ function resolve (track) {
 
 module.exports = {
     entry: path.resolve(__dirname, '../src/main.js'),
-    output: {
-        path: path.resolve(__dirname, '../dist')
-    },
     module: {
         rules: [
             {
