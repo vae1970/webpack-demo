@@ -4,6 +4,9 @@
     </div>
 </template>
 <script>
+
+    import {get} from '../../common/js/http'
+
     export default {
         data() {
             return {
@@ -12,6 +15,9 @@
         components: {},
         methods: {},
         beforeMount() {
+            get('http://cloud.vae1970.top/address.json',null).then(json=>{
+                console.log(json);
+            })
         }
 
     };
