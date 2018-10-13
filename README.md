@@ -1,2 +1,4 @@
 # webpack-demo
-wewbpack脚手架
+webpack脚手架
+
+vue+vuex+axios
