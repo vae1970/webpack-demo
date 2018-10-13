@@ -7,8 +7,12 @@ const merge = require('webpack-merge');
 const path = require('path');
 // rm-rf for node
 const rm = require('rimraf');
+const packageJSON = require('../package');
+const buildDir = process.platform === 'linux' ? ('/dev/shm/' + packageJSON.name) : '../dist';
+console.log('output dir is ' + buildDir + '\t!!!!!\t!!!!!\t!!!!!\t!!!!!\t!!!!!\t!!!!!');
+
 // 指定删除的目录
-const rmDir = path.resolve(__dirname, '/dev/shm/*');
+const rmDir = path.resolve(__dirname, buildDir);
 
 // 构建前清空build目录
 rm(rmDir, function (err) {
@@ -18,7 +22,7 @@ rm(rmDir, function (err) {
 module.exports = merge(base, {
     mode: 'production',
     output: {
-        path: path.resolve(__dirname, '/dev/shm'),
+        path: path.resolve(__dirname, buildDir),
         filename: 'js/[name].[chunkhash].js'
     },
     module: {
