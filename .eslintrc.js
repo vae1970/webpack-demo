@@ -3,17 +3,19 @@
 module.exports = {
 
     root: true,                 // 限定配置文件的使用范围
-    parser: 'babel-eslint',
     parserOptions: {             // 设置解析器选项
         // ecmaVersion: 2018
+        "parser": "babel-eslint",
+        "ecmaVersion": 2017,
+        "sourceType": "module"
     },
     env: {                      // 指定代码运行的宿主环境
         browser: true,
     },
     extends: [                  // 指定eslint规范
         'standard',
-        // "plugin:vue/recommended",
-        // "plugin:vue/base",
+        "plugin:vue/recommended",
+        "plugin:vue/base",
         // 'plugin:vue/essential'
     ],
 

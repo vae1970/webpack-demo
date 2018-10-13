@@ -5698,7 +5698,7 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-eslint-parser@^3.2.1:
+vue-eslint-parser@^3.2.1, vue-eslint-parser@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-3.2.2.tgz#47c971ee4c39b0ee7d7f5e154cb621beb22f7a34"
   integrity sha512-dprI6ggKCTwV22r+i8dtUGquiOCn063xyDmb7BV/BjG5Oc/m5EoMNrWevpvTcrlGuFZmYVPs5fgsu8UIxmMKzg==

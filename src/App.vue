@@ -1,24 +1,27 @@
 <template>
-    <div id="app">
-        <transition>
-            <keep-alive include='*' exclude="">
-                <router-view></router-view>
-            </keep-alive>
-        </transition>
-    </div>
+  <div id="app">
+    <transition>
+      <keep-alive
+        include="*"
+        exclude=""
+      >
+        <router-view />
+      </keep-alive>
+    </transition>
+  </div>
 </template>
 <script>
-    export default {
-        name: 'app',
-        data() {
-            return {
-            }
-        },
-        methods: {},
-        mounted() {},
-        beforeMount() {},
-        beforeUpdate() {},
-    };
+export default {
+    name: 'App',
+    data () {
+        return {
+        }
+    },
+    mounted () {},
+    beforeMount () {},
+    beforeUpdate () {},
+    methods: {}
+};
 </script>
 <style>
 </style>
