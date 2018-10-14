@@ -69,14 +69,16 @@ module.exports = merge(base, {
                 },
                 manifest: {
                     name: 'manifest',
-                    minChunks: 2, // 引用次数大于2则打包进commons
-                    minSize: 3000, // chunk大小大于这个值才允许打包进commons
+                    minChunks: 3, // 引用次数大于3则打包进manifest
+                    minSize: 3000, // chunk大小大于这个值才允许打包进manifest
                     chunks: 'all',
                     enforce: true,
                     priority: 1
                 }
             }
+        },
+        runtimeChunk: {
+            name: 'manifest'
         }
-        // runtimeChunk: true
     }
 });
