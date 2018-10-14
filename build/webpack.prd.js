@@ -40,7 +40,7 @@ module.exports = merge(base, {
         new VueLoaderPlugin(),
         // 配置html入口信息
         new HtmlWebpackPlugin({
-            title: '私人啤酒定制',
+            title: 'hello vue',
             filename: 'index.html',
             template: './index.html',
             // favicon: path.resolve(__dirname, '../src/assets/bedtimeStory/image/favicon.svg'),
@@ -50,15 +50,33 @@ module.exports = merge(base, {
     ],
     optimization: {
         splitChunks: {
-            chunks: 'all',
+            // chunks: 'all',
+            chunks: 'async',
+            minSize: 30000,
+            maxSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~',
+            name: true,
             cacheGroups: {
                 vendor: {
                     test: /node_modules/,
                     name: 'vendors',
-                    chunks: 'all'
+                    chunks: 'all',
+                    enforce: true,
+                    priority: 2
+                },
+                manifest: {
+                    name: 'manifest',
+                    minChunks: 2, // 引用次数大于2则打包进commons
+                    minSize: 3000, // chunk大小大于这个值才允许打包进commons
+                    chunks: 'all',
+                    enforce: true,
+                    priority: 1
                 }
             }
-        },
-        runtimeChunk: true
+        }
+        // runtimeChunk: true
     }
 });
