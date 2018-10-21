@@ -10,6 +10,7 @@ const rm = require('rimraf');
 const packageJSON = require('../package');
 const buildDir = process.platform === 'linux' ? ('/dev/shm/' + packageJSON.name) : '../dist';
 console.log('output dir is ' + buildDir + '\t!!!!!\t!!!!!\t!!!!!\t!!!!!\t!!!!!\t!!!!!');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // 指定删除的目录
 const rmDir = path.resolve(__dirname, buildDir);
@@ -46,7 +47,8 @@ module.exports = merge(base, {
             // favicon: path.resolve(__dirname, '../src/assets/bedtimeStory/image/favicon.svg'),
             // js资源插入位置,true表示插入到body元素底部
             inject: true
-        })
+        }),
+        new BundleAnalyzerPlugin()
     ],
     optimization: {
         splitChunks: {
