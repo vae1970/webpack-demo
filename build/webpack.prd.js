@@ -11,9 +11,14 @@ const packageJSON = require('../package');
 const buildDir = process.platform === 'linux' ? ('/dev/shm/' + packageJSON.name) : '../dist';
 console.log('output dir is ' + buildDir + '\t!!!!!\t!!!!!\t!!!!!\t!!!!!\t!!!!!\t!!!!!');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const webpack = require('webpack');
 
 // 指定删除的目录
 const rmDir = path.resolve(__dirname, buildDir);
+// 拼接路径
+function resolve (track) {
+    return path.join(__dirname, '..', track);
+}
 
 // 构建前清空build目录
 rm(rmDir, function (err) {
@@ -29,6 +34,17 @@ module.exports = merge(base, {
     module: {
         rules: [
             {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                include: resolve('src'),
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            },
+            {
                 test: /\.(css)$/,
                 use: [
                     'vue-style-loader',
@@ -38,6 +54,9 @@ module.exports = merge(base, {
         ]
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            'Promise': 'bluebird'
+        }),
         new VueLoaderPlugin(),
         // 配置html入口信息
         new HtmlWebpackPlugin({

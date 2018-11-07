@@ -5,6 +5,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const base = require('./webpack.base.js');
 const merge = require('webpack-merge');
+const path = require('path');
+
+// 拼接路径
+function resolve (track) {
+    return path.join(__dirname, '..', track);
+}
 
 module.exports = merge(base, {
     mode: 'development',
@@ -28,6 +34,12 @@ module.exports = merge(base, {
     },
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                include: resolve('src')
+            },
             {
                 test: /\.(css)$/,
                 use: [
