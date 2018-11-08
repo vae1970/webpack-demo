@@ -3,6 +3,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const notifier = require('node-notifier');
 const base = require('./webpack.base.js');
 const merge = require('webpack-merge');
 const path = require('path');
