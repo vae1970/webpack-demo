@@ -7,7 +7,7 @@ function resolve (track) {
 }
 
 module.exports = {
-    entry: path.resolve(__dirname, '../src/main.js'),
+    entry: ['@babel/polyfill', path.resolve(__dirname, '../src/main.js')],
     module: {
         rules: [
             {
